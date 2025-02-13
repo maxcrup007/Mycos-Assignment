@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="Max" content="Vorawut Phirunpatthanagul">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,14 +15,10 @@
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
   <style>
 
-    @media screen and (max-width: 1440px) {
-    body {
-        font-size: 16px;
-      }
-      .container {
-        width: 100%;
-        padding: 10px;
-      }
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
     }
 
 
@@ -29,15 +26,17 @@
             display: flex;
             font-family: 'Outfit', sans-serif; 
             font-weight: 400, 700;
+            min-height: 100vh;
+            padding: 20px;
+            font-size: 16px;
             flex-direction: row;
             align-items: center;
             justify-content: center;
             background:  hsl(212, 45%, 89%);
-            height: 100vh;
             box-sizing: content-box;
-            width: 1440px;
+            width: 375px;
         }
-    
+
     p   { 
             font-family: 'Outfit', sans-serif; 
             font-weight: bold;
@@ -47,20 +46,28 @@
             display: flex; 
         }
 
+    .container {
+            display: flex;
+            flex-wrap: wrap;
+          }
+
     .card { 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+      
             background: white;
             padding: 20px;
-            border-radius: 18px;
+            border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 250px;
-            max-width: 400px;
             text-align: center;
+            width: 90%;
+            max-width: 400px; 
+            min-width: 280px; 
 
+           
+            height: auto; 
+            min-height: 200px; 
           }
+
+        
 
     .card img { 
             width: 100%;
@@ -70,11 +77,23 @@
 
           }
 
+    .card-content {
+            padding: 20px;
+          }
+
 
 
     .attribution_a { font-family: 'Outfit', sans-serif; font-size: 13px; color: hsl(216, 15%, 48%); text-align: center; }
     .attribution_b { font-family: 'Outfit', sans-serif; font-size: 10px; color: hsl(200, 15%, 48%); text-align: center; }
+
+    @media (max-width: 375px) {
+    .card {
+      width: 100%;
+      max-width: 350px; /* Adjusted for smaller screens */
+    }
+  }
     
+
   </style>
 </head>
 <body>
@@ -82,6 +101,8 @@
   <div class="card">
 
     <img src="images/image-qr-code.png" alt="My Image" width="300">
+
+    <br>
   
     <p>
       Improve your front-end skills by building projects 
@@ -99,10 +120,7 @@
       Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
       Coded by <a href="#">Max Vorawut</a>.
     </div>
-
     <br>
-
-    </div>
   </div>
   
   
