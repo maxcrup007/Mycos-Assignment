@@ -1,111 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="Max" content="Vorawut Phirunpatthanagul">
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
-
-
-  
-  <title>Frontend Mentor | QR code component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-
-    @media screen and (max-width: 1440px) {
-    body {
-        font-size: 16px;
-      }
-      .container {
-        width: 100%;
-        padding: 10px;
-      }
-    }
-
-
-    body {
-            display: flex;
-            font-family: 'Outfit', sans-serif; 
-            font-weight: 400, 700;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            background:  hsl(212, 45%, 89%);
-            height: 100vh;
-            box-sizing: content-box;
-            width: 1440px;
-        }
-    
-    p   { 
-            font-family: 'Outfit', sans-serif; 
-            font-weight: bold;
-            font-size: 20px; 
-            text-align: center; 
-            color: hsl(218, 44%, 22%);
-            display: flex; 
-        }
-
-    .card { 
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: white;
-            padding: 20px;
-            border-radius: 18px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            width: 250px;
-            max-width: 400px;
-            text-align: center;
-
-          }
-
-    .card img { 
-            width: 100%;
-            height: auto;
-            display: block;
-            border-radius: 18px;
-
-          }
-
-
-
-    .attribution_a { font-family: 'Outfit', sans-serif; font-size: 13px; color: hsl(216, 15%, 48%); text-align: center; }
-    .attribution_b { font-family: 'Outfit', sans-serif; font-size: 10px; color: hsl(200, 15%, 48%); text-align: center; }
-    
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <title>Hi-Lo game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .dice-container { display: flex; justify-content: center; margin: 20px; }
+        .dice { font-size: 50px; margin: 10px; }
+        .bet-buttons button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
 </head>
 <body>
+  <div class="modern-container">
 
-  <div class="card">
+      <header class="w3-container w3-center w3-padding-32"> 
+        <h1><b>HI-LO game</b></h1>
+        <p>Let's play your HI-LO and roll the dice!</p>
+      </header>
 
-    <img src="images/image-qr-code.png" alt="My Image" width="300">
-  
-    <p>
-      Improve your front-end skills by building projects 
-    </p>
+      
 
- 
+      <input type="number" id="betAmount" placeholder="Enter bet amount" min="1">
+      <br><br>
+      <div class="bet-buttons">
+          <button class="gambling-button1" onclick="placeBet('High')">HIGH (12≥)</button>
+          <button class="gambling-button2" onclick="placeBet('Mid')">MID (11)</button>
+          <button class="gambling-button3" onclick="placeBet('Low')">LOW (10≤)</button>
+      </div>
+      <br>
+      <button class="start-game-button" onclick="rollDice()">Roll Dice</button>
+      <br><br>
 
-    <div class="attribution_a">
-      Scan the QR code to visit Frontend Mentor and take your coding skills to the next level
+
+      <div id="amount-alert-popup" class="popup">
+        <div class="popup-content">
+          <span class="close_btn" onclick="amount_closeAlertPopup()"></span>
+          <p id="amount-alert-message">Please configure your amount!!!</p>
+        </div>
+      </div>
+
+      <div id="bet-alert-popup" class="popup">
+        <div class="popup-content">
+          <span class="close_btn" onclick="bet_closeAlertPopup()"></span>
+          <p id="bet-alert-message">Please Choose your bet!!!</p>
+        </div>
+      </div>
+      
+
     </div>
 
-    <br>
+      
 
-    <div class="attribution_b">
-      Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-      Coded by <a href="#">Max Vorawut</a>.
-    </div>
+      <div class="d-container">
+        <div class="d-container">
+          <h4>Roll Dice 🎲</h4>
+        </div>
+          <ul class="d-container">
+            <div class="dice-container">
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice1"><div class="pretty-question">Try Me</div></span><br>
+                <span>skill issue</span>
+              </li>
 
-    <br>
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice2"><div class="pretty-question">Try Me</div></span><br>
+                <span>skill issue</span>
+              </li>
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice3"><div class="pretty-question">Try Me</div></span><br>
+                <span>skill issue</span>
+              </li>
 
-    </div>
+            </div>
+        </ul>
+
+        
+      </div>
+      <div class="text-with-alert"></div>
+        <h2 class="victory-text" id="result"></h2>
+
+      </div>
+      
+      <h3 class="balance-text" id="balance">Balance: $100</h3>
+
+      <br>
+
+      <div class="rules-container">
+        
+              <h2><b>Game's rule</b></h2>
+              
+              <ol>
+                <li>High: won if sum of 3 dices more than or equal 12</li>
+                <li>Mid: won if sum of 3 dices exactly equal to 11</li>
+                <li>Low: won if sum of 3 dices lower than or equal 10</li>
+                <li>If player won by “Mid” they can get 5 times reward</li>
+              </ol>
+
+          
+      </div>
+                
   </div>
-  
-  
-  
+
+
+    <script>
+        let balance = 100;
+        let currentBet = 0;
+        let betType = "";
+
+        function amount_showAlertPopup() {
+          document.getElementById('amount-alert-message').innerText = message;
+          document.getElementById('amount-alert-popup').style.display = 'block';
+        }
+
+        // Function to close the alert pop-up
+        function amount_closeAlertPopup() {
+          document.getElementById('amount-alert-popup').style.display = 'none';
+        }
+
+        function bet_showAlertPopup() {
+          document.getElementById('bet-alert-message').innerText = message;
+          document.getElementById('bet-alert-popup').style.display = 'block';
+        }
+
+        // Function to close the alert pop-up
+        function bet_closeAlertPopup() {
+          document.getElementById('bet-alert-popup').style.display = 'none';
+        }
+
+        function placeBet(type) {
+            let betAmount = parseInt(document.getElementById('betAmount').value);
+            if (betAmount > 0 && betAmount <= balance) {
+                currentBet = betAmount;
+                betType = type;
+                document.getElementById('result').textContent = `You bet $${betAmount} on ${type}.`;
+            } else {
+              amount_showAlertPopup('Please configure your amount!!!')
+            }
+        }
+
+        function rollDice() {
+            if (currentBet === 0) {
+              bet_showAlertPopup('Please Choose your bet!!!')
+                return;
+            }
+
+            
+            let dice1 = Math.floor(Math.random() * 6) + 1;
+            let dice2 = Math.floor(Math.random() * 6) + 1;
+            let dice3 = Math.floor(Math.random() * 6) + 1;
+            let sum = dice1 + dice2 + dice3;
+            
+            document.getElementById('dice1').textContent = dice1;
+            document.getElementById('dice2').textContent = dice2;
+            document.getElementById('dice3').textContent = dice3;
+            
+            let winnings = 0;
+            if ((betType === 'High' && sum >= 12) || (betType === 'Low' && sum <= 10)) {
+                winnings = currentBet * 2;
+            } else if (betType === 'Mid' && sum === 11) {
+                winnings = currentBet * 5;
+            }
+            
+            if (winnings > 0) {
+                balance += winnings;
+                document.getElementById('result').textContent = `You won! Your winnings: $${winnings}`;
+            } else {
+                balance -= currentBet;
+                document.getElementById('result').textContent = `You lost! The dice sum is ${sum}.`;
+            }
+            document.getElementById('balance').textContent = `Balance: $${balance}`;
+            currentBet = 0;
+        }
+
+
+    </script>
 </body>
 </html>

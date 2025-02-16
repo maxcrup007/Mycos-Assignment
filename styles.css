@@ -1,0 +1,408 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+}
+
+.bet-buttons button, button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.bet-buttons button:hover, button:hover {
+    background-color: #218838;
+}
+
+.input-container {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+}
+
+.input-container input[type="number"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 2px solid #28a745;
+    border-radius: 5px;
+    width: 200px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+.input-container input[type="number"]:focus {
+    border-color: #218838;
+}
+
+.input-container span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.dice-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.dice {
+    font-size: 50px;
+    margin: 10px;
+    display: inline-block;
+    animation: rollDice 0.5s ease-in-out;
+}
+
+.modern-container {
+  background-color: #f5f5f5; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 20px; /* Padding for spacing */
+  margin: 20px auto; /* Center the container */
+  max-width: 600px; /* Max width for responsiveness */
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Heading styles */
+.modern-container h2 {
+  color: #333; /* Dark color for heading */
+  font-size: 24px; /* Font size for heading */
+  margin-bottom: 10px; /* Space below the heading */
+}
+
+/* Paragraph styles */
+.modern-container p {
+  color: #666; /* Gray color for text */
+  font-size: 16px; /* Font size for text */
+  line-height: 1.6; /* Line height for readability */
+}
+
+.d-container {
+  background-color: #f5f5f5; /* Light gray background */
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 60px; /* Padding for spacing */
+  margin: 60px auto; /* Center the container */
+  max-width: 1000px; /* Max width for responsiveness */
+  font-family: 'Roboto', sans-serif; /* Modern font */
+}
+
+/* Heading styles */
+.d-container h2 {
+  color: #333; /* Dark color for heading */
+  font-size: 24px; /* Font size for heading */
+  margin-bottom: 10px; /* Space below the heading */
+}
+
+/* Paragraph styles */
+.d-container p {
+  color: #666; /* Gray color for text */
+  font-size: 16px; /* Font size for text */
+  line-height: 1.6; /* Line height for readability */
+}
+
+
+
+.gambling-button1 {
+    background: linear-gradient(45deg, #ff005a, #ff7300);
+    border: 3px solid #fff700;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+
+.gambling-button2 {
+    background: linear-gradient(45deg, #eaff2c, #c05a07);
+    border: 3px solid #fff700;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+ }
+
+.gambling-button3 {
+    background: linear-gradient(45deg, #20f74f, #c05a07);
+    border: 3px solid #fff700;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px 30px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+ }
+  
+  .gambling-button:hover {
+    background: linear-gradient(45deg, #ff7300, #ff005a);
+    box-shadow: 0 0 15px rgba(255, 255, 0, 0.7);
+    transform: scale(1.1);
+  }
+
+  .start-game-button {
+    background-color: #1E90FF;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    padding: 12px 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .start-game-button:hover {
+    background-color: #1C86EE;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .balance-text {
+    color: #333; /* Dark gray color for a modern look */
+    font-family: 'Roboto', sans-serif; /* Clean and modern font */
+    font-size: 24px; /* Appropriate size for balance display */
+    font-weight: 500; /* Medium weight for emphasis */
+    text-align: center; /* Center the text */
+    padding: 10px 20px; /* Padding for some spacing */
+    border: 2px solid #1E90FF; /* Border for modern styling */
+    border-radius: 8px; /* Rounded corners for a modern feel */
+    background: #F5F5F5; /* Light background color */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: inline-block; /* Ensure it doesn't take full width */
+  }
+  
+  .balance-text:hover {
+    background: #E0E0E0; /* Slightly darker background on hover */
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Slightly deeper shadow on hover */
+    transform: translateY(-2px); /* Lift effect on hover */
+    transition: all 0.3s ease-in-out; /* Smooth transition for effects */
+  }
+
+  .victory-text {
+    background: linear-gradient(45deg, #FFD700, #FF4500); /* Gradient background */
+    /* -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+    font-family: 'Impact', sans-serif;
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5),
+                 0 0 10px rgba(255, 215, 0, 0.7),
+                 0 0 20px rgba(255, 69, 0, 0.7);
+    animation: victory-animation 1.5s infinite alternate;
+  }
+  
+  .popup {
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+}
+
+  .popup-content {
+      text-align: center;
+  }
+
+  .popup button {
+      background-color: red;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      cursor: pointer;
+  }
+    
+  /* Close button */
+  .close_btn {
+    color: #aaa; /* Gray color for close button */
+    float: right; /* Align to the right */
+    font-size: 28px; /* Larger font size */
+    font-weight: bold; /* Bold font weight */
+    cursor: pointer; /* Pointer cursor */
+  }
+  
+  .close_btn:hover {
+    color: #000; /* Change color on hover */
+  }
+
+  .pretty-question::after {
+    content: '?';
+    color: #FF4500;
+    font-size: 36px;
+    position: absolute;
+    top: 0;
+    right: -25px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Shadow for depth */
+    animation: bounce 1s infinite alternate; /* Animation for movement */
+  }
+  
+  @keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+  }
+
+  .dice-result {
+    color: #333; /* Dark color for readability */
+    font-family: 'Courier New', monospace; /* Monospaced font for a game-like feel */
+    font-size: 36px; /* Large font size for emphasis */
+    text-align: center; /* Center the text */
+    padding: 10px 20px; /* Padding for spacing */
+    border: 2px solid #000; /* Black border for a dice look */
+    border-radius: 10px; /* Rounded corners for a modern feel */
+    background: #FFF; /* White background to mimic dice */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    display: inline-block; 
+  }
+  
+  .dice-result::before {
+    content: '🎲 '; 
+  }
+  
+  .dice-result::after {
+    content: ' 🎲'; 
+  }
+  
+  .dice-result:hover {
+    background: #F0F0F0; 
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-2px); 
+    transition: all 0.3s ease-in-out; 
+  }
+
+  .rules-container {
+    background-color: #f9f9f9; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    padding: 20px; 
+    margin: 20px auto; 
+    max-width: 800px; 
+    font-family: 'Roboto', sans-serif; 
+  }
+  
+  /* Heading styles */
+  .rules-container h2 {
+    color: #333; 
+    font-size: 28px; 
+    margin-bottom: 15px; 
+    border-bottom: 2px solid #ddd; 
+    padding-bottom: 5px; 
+  }
+  
+  /* List styles */
+  .rules-container ol {
+    color: #555; 
+    font-size: 18px; 
+    margin: 0; 
+    padding-left: 20px; 
+  }
+  
+  
+  .rules-container ol li {
+    margin-bottom: 10px; 
+  }
+  
+  
+@keyframes victory-animation {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.1); }
+  }
+
+@keyframes rollDice {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(90deg); }
+    50% { transform: rotate(180deg); }
+    75% { transform: rotate(270deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px #fff700, 0 0 10px #fff700, 0 0 15px #fff700, 0 0 20px #ff005a, 0 0 25px #ff005a, 0 0 30px #ff005a, 0 0 35px #ff005a; }
+    50% { box-shadow: 0 0 10px #fff700, 0 0 15px #fff700, 0 0 20px #fff700, 0 0 25px #ff005a, 0 0 30px #ff005a, 0 0 35px #ff005a, 0 0 40px #ff005a; }
+    100% { box-shadow: 0 0 5px #fff700, 0 0 10px #fff700, 0 0 15px #fff700, 0 0 20px #ff005a, 0 0 25px #ff005a, 0 0 30px #ff005a, 0 0 35px #ff005a; }
+  }
+  
+  .gambling-button:active {
+    animation: glowing 1.5s infinite;
+  }
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0px rgba(30, 144, 255, 0.7); }
+    70% { box-shadow: 0 0 15px rgba(30, 144, 255, 0.7); }
+    100% { box-shadow: 0 0 0px rgba(30, 144, 255, 0.7); }
+}
+  
+  .start-game-button:active {
+    animation: pulse 0.5s infinite;
+
+  }
+
+.card {
+    background: white;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+}
+
+#result {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #333;
+}
+
+#balance {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+}
