@@ -24,17 +24,26 @@
 
       
 
-      <input type="number" id="betAmount" placeholder="Enter bet amount" min="1">
+      <div class="input-container">
+        <label for="betAmount">Select Bet Amount:</label>
+        <select id="betAmount">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+      </div>
+
       <br><br>
       <div class="bet-buttons">
-          <button class="gambling-button1" onclick="placeBet('High')">HIGH (12≥)</button>
-          <button class="gambling-button2" onclick="placeBet('Mid')">MID (11)</button>
-          <button class="gambling-button3" onclick="placeBet('Low')">LOW (10≤)</button>
+          <button class="gambling-button1" onclick="placeBet('high')">HIGH (12≥)</button>
+          <button class="gambling-button2" onclick="placeBet('mid')">MID (11)</button>
+          <button class="gambling-button3" onclick="placeBet('low')">LOW (10≤)</button>
       </div>
       <br>
-      <button class="start-game-button" onclick="rollDice()">Roll Dice</button>
-      <br><br>
-
 
       <div id="amount-alert-popup" class="popup">
         <div class="popup-content">
@@ -49,16 +58,38 @@
           <p id="bet-alert-message">Please Choose your bet!!!</p>
         </div>
       </div>
+
+      <div class="balance-container">
+        <h3 class="balance-text" id="balance">Balance: $100</h3>
+        </div>
+  
+        <br>
+
+      <div id="warningPopup" class="popup">
+          <div class="popup-content">
+              <p id="popupMessage"></p>
+              <button onclick="closePopup()">OK</button>
+          </div>
+      </div>
       
 
     </div>
 
+    <div class="input-container">
+
+      <div class="text-with-alert"></div>
+          <h2 class="victory-text" id="result"></h2>
+
+      </div>
+
+    </div>
       
 
       <div class="d-container">
-        <div class="d-container">
-          <h4>Roll Dice 🎲</h4>
+        <div>
+          <h4>🎲 Roll Dice Result 🎲</h4>
         </div>
+        
           <ul class="d-container">
             <div class="dice-container">
               <span class="dice" >🎲</span>
@@ -83,14 +114,10 @@
 
         
       </div>
-      <div class="text-with-alert"></div>
-        <h2 class="victory-text" id="result"></h2>
 
-      </div>
       
-      <h3 class="balance-text" id="balance">Balance: $100</h3>
 
-      <br>
+      
 
       <div class="rules-container">
         
@@ -114,69 +141,53 @@
         let currentBet = 0;
         let betType = "";
 
-        function amount_showAlertPopup() {
-          document.getElementById('amount-alert-message').innerText = message;
-          document.getElementById('amount-alert-popup').style.display = 'block';
+        function showPopup(message) {
+          document.getElementById("popupMessage").textContent = message;
+          document.getElementById("warningPopup").style.display = "block";
         }
 
-        // Function to close the alert pop-up
-        function amount_closeAlertPopup() {
-          document.getElementById('amount-alert-popup').style.display = 'none';
+        function closePopup() {
+          document.getElementById("warningPopup").style.display = "none";
         }
 
-        function bet_showAlertPopup() {
-          document.getElementById('bet-alert-message').innerText = message;
-          document.getElementById('bet-alert-popup').style.display = 'block';
-        }
 
-        // Function to close the alert pop-up
-        function bet_closeAlertPopup() {
-          document.getElementById('bet-alert-popup').style.display = 'none';
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1; 
         }
 
         function placeBet(type) {
-            let betAmount = parseInt(document.getElementById('betAmount').value);
-            if (betAmount > 0 && betAmount <= balance) {
-                currentBet = betAmount;
-                betType = type;
-                document.getElementById('result').textContent = `You bet $${betAmount} on ${type}.`;
-            } else {
-              amount_showAlertPopup('Please configure your amount!!!')
-            }
-        }
+            let betAmount = parseInt(document.getElementById("betAmount").value);
 
-        function rollDice() {
-            if (currentBet === 0) {
-              bet_showAlertPopup('Please Choose your bet!!!')
+            if (betAmount > balance) {
+                showPopup("Not enough balance!");
                 return;
             }
 
-            
-            let dice1 = Math.floor(Math.random() * 6) + 1;
-            let dice2 = Math.floor(Math.random() * 6) + 1;
-            let dice3 = Math.floor(Math.random() * 6) + 1;
-            let sum = dice1 + dice2 + dice3;
-            
-            document.getElementById('dice1').textContent = dice1;
-            document.getElementById('dice2').textContent = dice2;
-            document.getElementById('dice3').textContent = dice3;
-            
-            let winnings = 0;
-            if ((betType === 'High' && sum >= 12) || (betType === 'Low' && sum <= 10)) {
-                winnings = currentBet * 2;
-            } else if (betType === 'Mid' && sum === 11) {
-                winnings = currentBet * 5;
-            }
-            
-            if (winnings > 0) {
+            let dice1 = rollDice();
+            let dice2 = rollDice();
+            let dice3 = rollDice();
+            let total = dice1 + dice2 + dice3;
+
+            document.getElementById("dice1").textContent = `🎲 ${dice1}`;
+            document.getElementById("dice2").textContent = `🎲 ${dice2}`;
+            document.getElementById("dice3").textContent = `🎲 ${dice3}`;
+
+            let resultText = `Rolled: ${total} - `;
+
+            if ((type === "high" && total >= 12) ||
+                (type === "mid" && total === 11) ||
+                (type === "low" && total <= 10)) {
+                
+                let winnings = type === "mid" ? betAmount * 5 : betAmount * 2;
                 balance += winnings;
-                document.getElementById('result').textContent = `You won! Your winnings: $${winnings}`;
+                resultText += `You won $${winnings}! 🎉`;
             } else {
-                balance -= currentBet;
-                document.getElementById('result').textContent = `You lost! The dice sum is ${sum}.`;
+                balance -= betAmount;
+                resultText += `You lost $${betAmount}! 😢`;
             }
-            document.getElementById('balance').textContent = `Balance: $${balance}`;
-            currentBet = 0;
+
+            document.getElementById("result").textContent = resultText;
+            document.getElementById("balance").textContent = `Balance: $${balance}`;
         }
 
 
