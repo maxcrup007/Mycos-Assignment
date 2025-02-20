@@ -36,32 +36,23 @@
             <option value="100">100</option>
         </select>
       </div>
+      
 
       <br><br>
       <div class="bet-buttons">
-          <button class="gambling-button1" onclick="placeBet('high')">HIGH (12≥)</button>
-          <button class="gambling-button2" onclick="placeBet('mid')">MID (11)</button>
-          <button class="gambling-button3" onclick="placeBet('low')">LOW (10≤)</button>
+          <button class="gambling-button1" onclick="placeBet('high')">HIGH 🔴</button>
+          <button class="gambling-button2" onclick="placeBet('mid')">MID 🟡</button>
+          <button class="gambling-button3" onclick="placeBet('low')">LOW 🟢</button>
+
+          
       </div>
+
       <br>
 
-      <div id="amount-alert-popup" class="popup">
-        <div class="popup-content">
-          <span class="close_btn" onclick="amount_closeAlertPopup()"></span>
-          <p id="amount-alert-message">Please configure your amount!!!</p>
-        </div>
-      </div>
+      <h3 class="balance-text" id="balance">Balance: $100</h3>
 
-      <div id="bet-alert-popup" class="popup">
-        <div class="popup-content">
-          <span class="close_btn" onclick="bet_closeAlertPopup()"></span>
-          <p id="bet-alert-message">Please Choose your bet!!!</p>
-        </div>
-      </div>
+      <br>
 
-      <div class="balance-container">
-        <h3 class="balance-text" id="balance">Balance: $100</h3>
-        </div>
   
         <br>
 
@@ -75,11 +66,10 @@
 
     </div>
 
-    <div class="input-container">
+    <div class="modern-container">
 
       <div class="text-with-alert"></div>
           <h2 class="victory-text" id="result"></h2>
-
       </div>
 
     </div>
@@ -89,24 +79,30 @@
         <div>
           <h4>🎲 Roll Dice Result 🎲</h4>
         </div>
+
+        <br><br>
+
+        <div id="total-container" class="hidden">
+          <h2 class="total-box" id="total"></h4>
+        </div>
         
           <ul class="d-container">
             <div class="dice-container">
               <span class="dice" >🎲</span>
               <li class="w3-padding-16">
                 <span class="dice-result" id="dice1"><div class="pretty-question">Try Me</div></span><br>
-                <span>skill issue</span>
+                <span>Dice "1"</span>
               </li>
 
               <span class="dice" >🎲</span>
               <li class="w3-padding-16">
                 <span class="dice-result" id="dice2"><div class="pretty-question">Try Me</div></span><br>
-                <span>skill issue</span>
+                <span>Dice "2"</span>
               </li>
               <span class="dice" >🎲</span>
               <li class="w3-padding-16">
                 <span class="dice-result" id="dice3"><div class="pretty-question">Try Me</div></span><br>
-                <span>skill issue</span>
+                <span>Dice "3"</span>
               </li>
 
             </div>
@@ -114,10 +110,6 @@
 
         
       </div>
-
-      
-
-      
 
       <div class="rules-container">
         
@@ -159,7 +151,7 @@
             let betAmount = parseInt(document.getElementById("betAmount").value);
 
             if (betAmount > balance) {
-                showPopup("Not enough balance!");
+                showPopup("Not enough balance! Please Pull up for next bet.");
                 return;
             }
 
@@ -187,6 +179,7 @@
             }
 
             document.getElementById("result").textContent = resultText;
+            document.getElementById("total").textContent = total;
             document.getElementById("balance").textContent = `Balance: $${balance}`;
         }
 
