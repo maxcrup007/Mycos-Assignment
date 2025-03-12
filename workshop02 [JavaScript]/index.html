@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <title>Hi-Lo game</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .dice-container { display: flex; justify-content: center; margin: 20px; }
+        .dice { font-size: 50px; margin: 10px; }
+        .bet-buttons button { margin: 10px; padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+  <div class="modern-container">
+
+      <header class="w3-container w3-center w3-padding-32"> 
+        <h1><b>HI-LO game</b></h1>
+        <p>Let's play your HI-LO and roll the dice!</p>
+      </header>
+
+      
+
+      <div class="input-container">
+        <label for="betAmount">Select Bet Amount:</label>
+        <select id="betAmount">
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="25">25</option>
+            <option value="50">50</option>
+            <option value="100">100</option>
+        </select>
+      </div>
+      
+
+      <br><br>
+      <div class="bet-buttons">
+          <button class="gambling-button1" onclick="placeBet('high')">HIGH 🔴</button>
+          <button class="gambling-button2" onclick="placeBet('mid')">MID 🟡</button>
+          <button class="gambling-button3" onclick="placeBet('low')">LOW 🟢</button>
+
+          
+      </div>
+
+      <br>
+
+      <h3 class="balance-text" id="balance">Balance: $100</h3>
+
+      <br>
+
+  
+        <br>
+
+      <div id="warningPopup" class="popup">
+          <div class="popup-content">
+              <p id="popupMessage"></p>
+              <button onclick="closePopup()">OK</button>
+          </div>
+      </div>
+      
+
+    </div>
+
+    <div class="modern-container">
+
+      <div class="text-with-alert"></div>
+          <h2 class="victory-text" id="result"></h2>
+      </div>
+
+    </div>
+      
+
+      <div class="d-container">
+        <div>
+          <h4>🎲 Roll Dice Result 🎲</h4>
+        </div>
+
+        <br><br>
+
+        <div id="total-container" class="hidden">
+          <h2 class="total-box" id="total"></h4>
+        </div>
+        
+          <ul class="d-container">
+            <div class="dice-container">
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice1"><div class="pretty-question">Try Me</div></span><br>
+                <span>Dice "1"</span>
+              </li>
+
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice2"><div class="pretty-question">Try Me</div></span><br>
+                <span>Dice "2"</span>
+              </li>
+              <span class="dice" >🎲</span>
+              <li class="w3-padding-16">
+                <span class="dice-result" id="dice3"><div class="pretty-question">Try Me</div></span><br>
+                <span>Dice "3"</span>
+              </li>
+
+            </div>
+        </ul>
+
+        
+      </div>
+
+      <div class="rules-container">
+        
+              <h2><b>Game's rule</b></h2>
+              
+              <ol>
+                <li>High: won if sum of 3 dices more than or equal 12</li>
+                <li>Mid: won if sum of 3 dices exactly equal to 11</li>
+                <li>Low: won if sum of 3 dices lower than or equal 10</li>
+                <li>If player won by “Mid” they can get 5 times reward</li>
+              </ol>
+
+          
+      </div>
+                
+  </div>
+
+
+    <script>
+        let balance = 100;
+        let currentBet = 0;
+        let betType = "";
+
+        function showPopup(message) {
+          document.getElementById("popupMessage").textContent = message;
+          document.getElementById("warningPopup").style.display = "block";
+        }
+
+        function closePopup() {
+          document.getElementById("warningPopup").style.display = "none";
+        }
+
+
+        function rollDice() {
+            return Math.floor(Math.random() * 6) + 1; 
+        }
+
+        function placeBet(type) {
+            let betAmount = parseInt(document.getElementById("betAmount").value);
+
+            if (betAmount > balance) {
+                showPopup("Not enough balance! Please Pull up for next bet.");
+                return;
+            }
+
+            let dice1 = rollDice();
+            let dice2 = rollDice();
+            let dice3 = rollDice();
+            let total = dice1 + dice2 + dice3;
+
+            document.getElementById("dice1").textContent = `🎲 ${dice1}`;
+            document.getElementById("dice2").textContent = `🎲 ${dice2}`;
+            document.getElementById("dice3").textContent = `🎲 ${dice3}`;
+
+            let resultText = `Rolled: ${total} - `;
+
+            if ((type === "high" && total >= 12) ||
+                (type === "mid" && total === 11) ||
+                (type === "low" && total <= 10)) {
+                
+                let winnings = type === "mid" ? betAmount * 5 : betAmount * 2;
+                balance += winnings;
+                resultText += `You won $${winnings}! 🎉`;
+            } else {
+                balance -= betAmount;
+                resultText += `You lost $${betAmount}! 😢`;
+            }
+
+            document.getElementById("result").textContent = resultText;
+            document.getElementById("total").textContent = total;
+            document.getElementById("balance").textContent = `Balance: $${balance}`;
+        }
+
+
+    </script>
+</body>
+</html>
